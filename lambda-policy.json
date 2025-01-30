@@ -1,0 +1,44 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+      {
+          "Action": [
+              "logs:CreateLogStream",
+              "logs:CreateLogGroup",
+              "logs:TagResource"
+          ],
+          "Resource": [
+              "arn:aws:logs:ap-northeast-1:676206904524:log-group:/aws/lambda/serverless-bolt-js-dev*:*"
+          ],
+          "Effect": "Allow"
+      },
+      {
+          "Action": [
+              "logs:PutLogEvents"
+          ],
+          "Resource": [
+              "arn:aws:logs:ap-northeast-1:676206904524:log-group:/aws/lambda/serverless-bolt-js-dev*:*:*"
+          ],
+          "Effect": "Allow"
+      },
+      {
+          "Action": [
+              "bedrock:RetrieveAndGenerate"
+          ],
+          "Resource": "*",
+          "Effect": "Allow"
+      },
+      {
+          "Action": [
+              "bedrock:StartIngestionJob",
+              "bedrock:ListDataSources",
+              "bedrock:InvokeModel",
+              "bedrock:InvokeModelWithResponseStream",
+              "bedrock:Retrieve",
+              "bedrock:GetDataSource"
+          ],
+          "Resource": "arn:aws:bedrock:ap-northeast-1::foundation-model/*",
+          "Effect": "Allow"
+      }
+  ]
+}
